@@ -202,7 +202,10 @@ void Thread::TaskFunctionAdapter(void *pvParameters)
 {
     Thread *thread = static_cast<Thread *>(pvParameters);
 
-    thread->Run();
+    while (true)
+    {
+        thread->Run();
+    }
 
 #if (INCLUDE_vTaskDelete == 1)
 

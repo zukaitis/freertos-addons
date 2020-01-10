@@ -158,7 +158,8 @@ class Thread {
          */
         inline void NotifyFromISR()
         {
-            xTaskNotifyFromISR( GetHandle(), 0, eNoAction, pdFALSE );
+            BaseType_t higherPriorityTaskWoken = pdFALSE;
+            xTaskNotifyFromISR( GetHandle(), 0, eNoAction, &higherPriorityTaskWoken );
         }
 
         /**
